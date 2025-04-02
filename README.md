@@ -9,7 +9,6 @@ A real-time chat application built with Socket.IO, React, and Vite. This applica
 - **Emoji Picker**: Click the emoji button to display a grid of emojis that can be added to messages
 - **System Messages**: Notifications when users join or leave the chat
 - **Message Timestamps**: Each message displays the time it was sent
-- **Responsive Design**: Works on both desktop and mobile devices
 
 ## Technologies Used
 
@@ -29,7 +28,7 @@ A real-time chat application built with Socket.IO, React, and Vite. This applica
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/chat-app.git
+   git clone https://github.com/lacey1998/Client-Server-Programming.git
    cd chat-app
    ```
 
