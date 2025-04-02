@@ -15,20 +15,16 @@ const io = new Server(server, {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Store connected users
-const users = new Map();
-
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'index.html'));
 });
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-  
+
   // Handle user joining
   socket.on('user:join', (username) => {
-    users.set(socket.id, username);
-    io.emit('user:list', Array.from(users.values()));
+    socket.username = username;
     io.emit('chat message', {
       text: `${username} has joined the chat`,
       username: 'System',
@@ -36,37 +32,21 @@ io.on('connection', (socket) => {
       isSystem: true
     });
   });
-  
+
   // Handle chat messages
   socket.on('chat message', (msg) => {
-    const username = users.get(socket.id) || 'Anonymous';
-    const timestamp = new Date().toLocaleTimeString();
     io.emit('chat message', {
       text: msg,
-      username,
-      timestamp,
-      id: socket.id
+      username: socket.username || 'Anonymous',
+      timestamp: new Date().toLocaleTimeString()
     });
   });
-  
-  // Handle typing status
-  socket.on('typing:start', () => {
-    const username = users.get(socket.id) || 'Anonymous';
-    socket.broadcast.emit('typing:status', `${username} is typing...`);
-  });
 
-  socket.on('typing:stop', () => {
-    socket.broadcast.emit('typing:status', '');
-  });
-  
   // Handle disconnection
   socket.on('disconnect', () => {
-    const username = users.get(socket.id);
-    if (username) {
-      users.delete(socket.id);
-      io.emit('user:list', Array.from(users.values()));
+    if (socket.username) {
       io.emit('chat message', {
-        text: `${username} has left the chat`,
+        text: `${socket.username} has left the chat`,
         username: 'System',
         timestamp: new Date().toLocaleTimeString(),
         isSystem: true

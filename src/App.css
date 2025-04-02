@@ -7,6 +7,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #f0f2f5;
+  height: 100vh;
 }
 
 .app {
@@ -14,11 +15,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .join-container {
   max-width: 400px;
-  margin: 100px auto;
+  width: 100%;
   padding: 20px;
   background: white;
   border-radius: 8px;
@@ -34,10 +36,12 @@ body {
 .chat-container {
   display: flex;
   height: 100vh;
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
   background: white;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .sidebar {
@@ -45,15 +49,20 @@ body {
   background: #f8f9fa;
   padding: 20px;
   border-right: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar h2 {
   margin-bottom: 15px;
   color: #1a73e8;
+  font-size: 1.2em;
 }
 
 .sidebar ul {
   list-style: none;
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 .sidebar li {
@@ -62,12 +71,14 @@ body {
   background: white;
   border-radius: 4px;
   color: #495057;
+  font-size: 0.9em;
 }
 
 .main-chat {
   flex: 1;
   display: flex;
   flex-direction: column;
+  background: white;
 }
 
 .messages {
@@ -98,6 +109,8 @@ body {
   background: #f8f9fa;
   color: #6c757d;
   font-style: italic;
+  max-width: 90%;
+  text-align: center;
 }
 
 .message-header {
@@ -105,6 +118,10 @@ body {
   justify-content: space-between;
   margin-bottom: 5px;
   font-size: 0.8em;
+}
+
+.message.own .message-header {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .username {
@@ -119,6 +136,7 @@ body {
   padding: 5px 15px;
   color: #6c757d;
   font-style: italic;
+  font-size: 0.9em;
 }
 
 .message-form {
@@ -126,7 +144,8 @@ body {
   padding: 20px;
   background: white;
   border-top: 1px solid #e9ecef;
-  position: relative;
+  gap: 10px;
+  align-items: center;
 }
 
 .message-form input {
@@ -134,8 +153,8 @@ body {
   padding: 10px 15px;
   border: 1px solid #e9ecef;
   border-radius: 20px;
-  margin-right: 10px;
   outline: none;
+  font-size: 1em;
 }
 
 .message-form input:focus {
@@ -150,38 +169,24 @@ button {
   border-radius: 20px;
   cursor: pointer;
   transition: background 0.2s;
+  font-size: 1em;
 }
 
 button:hover {
   background: #1557b0;
 }
 
-input {
-  padding: 10px 15px;
-  border: 1px solid #e9ecef;
-  border-radius: 20px;
-  outline: none;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-input:focus {
-  border-color: #1a73e8;
-}
-
-/* Emoji picker styles */
 .emoji-picker-container {
   position: relative;
-  margin-right: 10px;
 }
 
 .emoji-button {
+  padding: 8px;
   background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 5px;
+  font-size: 1.5em;
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,21 +208,39 @@ input:focus {
   grid-template-columns: repeat(5, 1fr);
   gap: 5px;
   margin-bottom: 10px;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .emoji-item {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
   padding: 5px;
+  font-size: 1.5em;
+  background: none;
   border-radius: 4px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.2s;
 }
 
 .emoji-item:hover {
   background: #f0f2f5;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .chat-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: 150px;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .message {
+    max-width: 85%;
+  }
 }

@@ -1,44 +1,67 @@
-# Client-Server-Programming
+# Real-time Chat Application
 
-A real-time chat application built with Socket.IO, React, and Vite.
+A real-time chat application built with Socket.IO, React, and Vite. This application allows users to communicate in real-time with features like user identification, emoji support, and system notifications.
 
 ## Features
 
-- Real-time messaging using Socket.IO
-- User identification with usernames
-- Message timestamps
-- Online users list
-- Typing indicators
-- System messages for user join/leave events
-- Emoji picker for expressive communication
-- Modern UI with clean design
-
-## Setup
-
-1. Install dependencies:
-```bash
-npm install
-```
-
-2. Start the server:
-```bash
-npm run server
-```
-
-3. In a new terminal, start the Vite development server:
-```bash
-npm run dev
-```
-
-The application will be available at http://localhost:5173
+- **User Identification**: Users must enter a username before joining the chat
+- **Real-time Messaging**: Instant message delivery between users
+- **Emoji Picker**: Click the emoji button to display a grid of emojis that can be added to messages
+- **System Messages**: Notifications when users join or leave the chat
+- **Message Timestamps**: Each message displays the time it was sent
+- **Responsive Design**: Works on both desktop and mobile devices
 
 ## Technologies Used
 
-- Socket.IO for real-time communication
-- React for the frontend UI
-- Vite for development and building
-- Express for the server
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: Node.js, Express
+- **Real-time Communication**: Socket.IO
+- **Development Tools**: Vite
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/chat-app.git
+   cd chat-app
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   ```
+
+3. Start the development server:
+   ```
+   npm run dev
+   ```
+
+4. In a separate terminal, start the Socket.IO server:
+   ```
+   npm run server
+   ```
+
+5. Open your browser and navigate to `http://localhost:5173`
+
+## Usage
+
+1. Enter your username in the login screen
+2. Start chatting with other users in real-time
+3. Use the emoji picker to add emojis to your messages
+4. See system notifications when users join or leave the chat
 
 ## License
 
-MIT License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Socket.IO for the real-time communication capabilities
+- Vite for the fast development experience
