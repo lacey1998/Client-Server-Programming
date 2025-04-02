@@ -8,8 +8,6 @@ function Chat() {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [isJoined, setIsJoined] = useState(false);
-  const [typingStatus, setTypingStatus] = useState('');
-  const [onlineUsers, setOnlineUsers] = useState([]);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -35,18 +33,8 @@ function Chat() {
       }
     });
 
-    socket.on('typing:status', (status) => {
-      setTypingStatus(status);
-    });
-
-    socket.on('user:list', (users) => {
-      setOnlineUsers(users);
-    });
-
     return () => {
       socket.off('chat message');
-      socket.off('typing:status');
-      socket.off('user:list');
     };
   }, []);
 
@@ -64,14 +52,6 @@ function Chat() {
       socket.emit('chat message', message);
       setMessage('');
     }
-  };
-
-  const handleTyping = () => {
-    socket.emit('typing:start');
-  };
-
-  const handleStopTyping = () => {
-    socket.emit('typing:stop');
   };
 
   // Creative addition: Emoji picker
@@ -103,14 +83,6 @@ function Chat() {
 
   return (
     <div className="chat-container">
-      <div className="sidebar">
-        <h2>Online Users</h2>
-        <ul>
-          {onlineUsers.map((user, index) => (
-            <li key={index}>{user}</li>
-          ))}
-        </ul>
-      </div>
       <div className="main-chat">
         <div className="messages">
           {messages.map((msg, index) => (
@@ -127,7 +99,6 @@ function Chat() {
           ))}
           <div ref={messagesEndRef} />
         </div>
-        {typingStatus && <div className="typing-status">{typingStatus}</div>}
         <form onSubmit={handleSubmit} className="message-form">
           <div className="emoji-picker-container">
             <button 
@@ -155,11 +126,7 @@ function Chat() {
           <input
             type="text"
             value={message}
-            onChange={(e) => {
-              setMessage(e.target.value);
-              handleTyping();
-            }}
-            onBlur={handleStopTyping}
+            onChange={(e) => setMessage(e.target.value)}
             placeholder="Type a message..."
           />
           <button type="submit">Send</button>
