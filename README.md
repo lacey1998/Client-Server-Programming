@@ -73,6 +73,9 @@ A real-time chat application built with Socket.IO, React, and Vite. This applica
 3. Use the emoji picker to add emojis to your messages
 4. See system notifications when users join or leave the chat
 
+## Youtube Video
+https://youtu.be/zct43JtbtcE
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
