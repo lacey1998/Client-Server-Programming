@@ -10,6 +10,23 @@ A real-time chat application built with Socket.IO, React, and Vite. This applica
 - **System Messages**: Notifications when users join or leave the chat
 - **Message Timestamps**: Each message displays the time it was sent
 
+## Creative Additions
+
+### 1. User Authentication System
+- Users must enter a username before joining the chat
+- Messages are tagged with the sender's username for clear communication
+
+### 2. Interactive Emoji Picker
+- Dedicated emoji button in the message input area
+- Quick emoji selection with a single click
+- Emojis are inserted at the current cursor position in the message
+- Available emojis: 😊 😂 ❤️ 👍 🎉 🔥 😎 🤔 👋 🙌
+
+### 3. System Messages
+- Automatic notifications when users join the chat
+- Automatic notifications when users leave the chat
+- Helps users track chat room activity in real-time
+
 ## Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript
@@ -60,7 +77,30 @@ A real-time chat application built with Socket.IO, React, and Vite. This applica
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Acknowledgments
+## Use of Generative AI in Development
 
-- Socket.IO for the real-time communication capabilities
-- Vite for the fast development experience
+This project was developed with the assistance of generative AI (ChatGPT, Model: GPT-4). Below are the details of how AI contributed to the project:
+
+1. **User Authentication Implementation**
+   - Prompt: "How can I add username authentication before allowing users to join the chat?"
+   - Response: ChatGPT suggested implementing a login form component and managing user states using React hooks.
+   - How It Was Used: The user authentication system was implemented using the suggested approach, requiring users to enter a username before joining the chat.
+
+3. **Emoji Picker Feature**
+   - Prompt: "How can I add an emoji picker to the chat application?"
+   - Response: ChatGPT provided code examples for implementing a custom emoji picker component with a grid of emojis and click handlers.
+   - How It Was Used: The emoji picker feature was implemented based on the provided examples, allowing users to easily add emojis to their messages.
+
+4. **System Messages Implementation**
+   - Prompt: "How can I add system messages for user join/leave events?"
+   - Response: ChatGPT explained how to handle connection/disconnection events in Socket.IO and broadcast system messages.
+   - How It Was Used: The system messages feature was implemented following the suggested approach, providing notifications when users join or leave the chat.
+
+The AI assistance was particularly helpful in:
+- Setting up the initial project structure
+- Adding user authentication
+- Creating interactive UI components
+- Debugging and refining the application
+
+While AI provided guidance and code examples, all implementations were reviewed, modified, and integrated into the project with proper understanding and consideration of the application's requirements.
+
