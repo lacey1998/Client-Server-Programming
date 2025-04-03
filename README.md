@@ -20,7 +20,7 @@ A real-time chat application built with Socket.IO, React, and Vite. This applica
 - Dedicated emoji button in the message input area
 - Quick emoji selection with a single click
 - Emojis are inserted at the current cursor position in the message
-- Available emojis: 😊 😂 ❤️ 👍 🎉 🔥 😎 🤔 👋 🙌
+- Available emojis: 😊 😂 👍 🎉 🔥 😎 🤔 
 
 ### 3. System Messages
 - Automatic notifications when users join the chat
